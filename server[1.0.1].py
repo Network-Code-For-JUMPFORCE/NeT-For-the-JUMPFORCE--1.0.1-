@@ -11,18 +11,20 @@ import smtplib
 #0=first name, 1=lastname
 #lfl=[]
 kolet=[[],[],[],[],[],[]]
-'''def sendmail (from_em,to,cc,subject,message,login,pas,akhary):
+def sendmail (to,subject,message):
+        from_em='jumpforcehelligames@gmail.com'
+        cc=[""]
         header  = "From: %s\n" %from_em
         header += "To: %s\n" %",".join(to)
         header += "CC: %s\n" %","join(cc)
         header += "Subject: %s\n\n" % subject
         message = header + message
-        server = smtplib.SMTP(akhary)
+        server = smtplib.SMTP('smtp.gmail.com',587)
         server.starttls()
-        server.login(login,pas)
+        server.login(from_em,*******)
         problems = server.sendmail(from_em,to,message)
         server.quit()
-        return (problems)'''
+        return (problems)
 
 def good (conn,i):
         
