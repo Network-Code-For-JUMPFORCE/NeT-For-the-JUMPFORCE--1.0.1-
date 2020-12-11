@@ -16,7 +16,7 @@ def sendmail (to,subject,message):
         cc=[""]
         header  = "From: %s\n" %from_em
         header += "To: %s\n" %",".join(to)
-        header += "CC: %s\n" %","join(cc)
+        header += "CC: %s\n" %",".join(cc)
         header += "Subject: %s\n\n" % subject
         message = header + message
         server = smtplib.SMTP('smtp.gmail.com',587)
@@ -176,4 +176,7 @@ host = socket.gethostbyname(host)
 port=1234
 s.bind((host,port))
 s.listen(120)
-listento ()
+_thread_start_new_thread(listento,())
+time.sleep('modat baz boodan server(second)')
+s.close()
+       
