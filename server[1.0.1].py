@@ -68,7 +68,7 @@ def yf (conn) :
         d=d.decode("utf-8")
         s=conn.recv(1024)
         s=s.decode("utf-8")
-        f=-1
+        f='-1'
         t=len(rang)
         if r in rang :
                 for i in range (t):
@@ -76,6 +76,7 @@ def yf (conn) :
                                 f=i
         conn.send(f.encode("utf-8"))
         f=int(f)
+	ff=f
         if f==-1:
                 time.sleep (7)
                 _thread_start_new_thread(vorodf,(conn))
@@ -88,12 +89,28 @@ def yf (conn) :
         f=str(f)
         conn.send(f.encode("utf-8"))
         f=int(f)
+	fff=0
         if f==1:
-                #send code for his email###########hello?...we have a problem hear!
+                code = random.randint(10000,99999)
+		payamcode="salam rafigh gol. \n behemoon gofti ke ramzero faramosh kardi, age ke gofti, bashe, inam code vorodet,\n"+ str(code) + "\n amma age az hichi khabar nadari, ye e-mail be hamin address bezan. albate, kolan ma dost darim ke baz khord shoma ro beshnavim, pas in e-mailo be onvan pol ertebati ma va khodet, dar nazar begir. \n ba tashako, JUMPFORCE GROUP. \n helli 3" 
+		sendmail  ((kolet[1])[ff],"ramzeto faramoosh kardi??(jumpforce game)",payamcode)
+                ccc=conn.recv(1024)
+		ccc=ccc.decode("utf-8")
+		ccc=int(ccc)
+		if ccc==code:
+			fff=1
         if f==-1:
                 time.sleep(7)
                 _thread_start_new_thread(vorodf,(conn))
                 return
+	conn.send(((str(fff)).encode("utf-8"))
+	if fff==1:
+		hispas = (kolet[4])[ff]
+		conn.send(((str(hispas)).encode("utf-8"))
+	if fff==0:
+		time.sleep(15)
+		_thread_start_new_thread(vorodf,(conn))
+	return 
 def vorodf (conn):     
         #f4=vorodf
         vs=conn.recv(1024)
