@@ -40,7 +40,9 @@ def nf (conn):
                         if pk[i]==p:
                                 f=i
                                 break
+        f=str(f)
         conn.send(f.encode("utf-8")
+        f=int(f)
         if f==-1:
                 time.sleep (7)
                 _thread_start_new_thread(vorodf,(conn))
@@ -50,6 +52,7 @@ def nf (conn):
                 payam=1
         else:
                 payam=0
+        payam=str(payam)
         conn.send(payam.encode("utf-8"))
         _thread_start_new_thread(good,(conn,i))
 def yf (conn) :
@@ -70,6 +73,7 @@ def yf (conn) :
                         if rang[i]==r:
                                 f=i
         conn.send(f.encode("utf-8"))
+        f=int(f)
         if f==-1:
                 time.sleep (7)
                 _thread_start_new_thread(vorodf,(conn))
@@ -79,7 +83,9 @@ def yf (conn) :
                         f=-1
                 else:
                         f=1
+        f=str(f)
         conn.send(f.encode("utf-8"))
+        f=int(f)
         if f==1:
                 #send code for his email###########hello?...we have a problem hear!
         if f==-1:
@@ -90,6 +96,7 @@ def vorodf (conn):
         #f4=vorodf
         vs=conn.recv(1024)
         vs=vs.decode("utf-8")
+        vs=int(vs)
         if vs == 1:
                 #nf
                 _thread_start_new_thread(nf,(conn))
@@ -117,8 +124,8 @@ def sakhtf (conn):
         d=d.decode("utf-8")
         s=conn.recv(1024)
         s=vs.decode("utf-8")
-        f=0
-        if i in (kolet(0)) :
+        f='0'
+        '''if i in (kolet(0)) :
                 f='0t'
                 conn.send(f.encode("utf-8"))
                 _thread_start_new_thread(sakhtf,(conn))
@@ -126,13 +133,13 @@ def sakhtf (conn):
         if e in (kolet(1)) :
                 f='1t'
                 conn.send(f.encode("utf-8"))
-                _thread_start_new_thread(sakhtf,(conn))
-                return
+                _thread_start_new_thread(sakhtf,(conn))       in bakhsh moshkel dare, bayad dorost beshe, faghat ye moshkel flochartie.
+                return'''
         '''ttt=len((kolet[5])[0])
         for ggg in range (ttt):
                 if (((kolet[5])[0])[ggg])==fi:
                         if (((kolet[5])[1])[ggg])==la:'''
-        conn.send(f.encode("utf-8"))
+        '''conn.send(f.encode("utf-8"))'''
         #############send code for his email and check it####### we have problem!
         #after check T
         (kolet[0]).append(i)
@@ -149,6 +156,7 @@ def sakhtf (conn):
 def kolf (conn):
         vs=conn.recv(1024)
         vs=vs.decode("utf-8")
+        vs=int(vs)
         if vs==1:
                 _thread_start_new_thread(vorodf,(conn))
         if vs==2:
