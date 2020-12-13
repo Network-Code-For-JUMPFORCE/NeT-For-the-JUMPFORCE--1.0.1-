@@ -12,6 +12,8 @@ import random
 #0=first name, 1=lastname
 #lfl=[]
 kolet=[[],[],[],[],[],[]]
+#0= online ya na 1=conn if on 
+onof=[[],[]]
 def sendmail (to,subject,message):
         from_em='jumpforcehelligames@gmail.com'
         cc=[""]
@@ -93,8 +95,14 @@ def yf (conn) :
 	fff=0
         if f==1:
                 code = random.randint(10000,99999)
-		payamcode="salam rafigh gol. \n behemoon gofti ke ramzero faramosh kardi, age ke gofti, bashe, inam code vorodet,\n"+ str(code) + "\n amma age az hichi khabar nadari, ye e-mail be hamin address bezan. albate, kolan ma dost darim ke baz khord shoma ro beshnavim, pas in e-mailo be onvan pol ertebati ma va khodet, dar nazar begir. \n ba tashako, JUMPFORCE GROUP. \n helli 3" 
-		sendmail  ((kolet[1])[ff],"ramzeto faramoosh kardi??(jumpforce game)",payamcode)
+		payamcode="salam rafigh gol. \n behemoon gofti ke ramzeto faramosh kardi, age ke gofti, bashe, inam code vorodet,\n"+ str(code) + "\n amma age az hichi khabar nadari, ye e-mail be hamin address bezan. albate, kolan ma dost darim ke baz khord shoma ro beshnavim, pas in e-mailo be onvan pol ertebati ma va khodet, dar nazar begir. \n ba tashako, JUMPFORCE GROUP. \n helli 3" 
+		bb=sendmail  ((kolet[1])[ff],"ramzeto faramoosh kardi??(jumpforce game)",payamcode)
+                if bb!={}:
+                        print (conn, bb)
+                        conn.send(("0").encode("utf-8"))
+                        conn.close()
+                        return
+                conn.send(("1").encode("utf-8"))
                 ccc=conn.recv(1024)
 		ccc=ccc.decode("utf-8")
 		ccc=int(ccc)
@@ -105,9 +113,11 @@ def yf (conn) :
                 _thread_start_new_thread(vorodf,(conn))
                 return
 	conn.send(((str(fff)).encode("utf-8"))
+        hispas=0
 	if fff==1:
 		hispas = (kolet[4])[ff]
 		conn.send(((str(hispas)).encode("utf-8"))
+                _thread_start_new_thread(vorodf,(conn))
 	if fff==0:
 		time.sleep(15)
 		_thread_start_new_thread(vorodf,(conn))
@@ -145,34 +155,49 @@ def sakhtf (conn):
         s=conn.recv(1024)
         s=vs.decode("utf-8")
         f='0'
-        '''if i in (kolet(0)) :
-                f='0t'
+        if i in (kolet(0)) :
+                f='20'
                 conn.send(f.encode("utf-8"))
                 _thread_start_new_thread(sakhtf,(conn))
                 return
         if e in (kolet(1)) :
-                f='1t'
+                f='21'
                 conn.send(f.encode("utf-8"))
                 _thread_start_new_thread(sakhtf,(conn))       in bakhsh moshkel dare, bayad dorost beshe, faghat ye moshkel flochartie.
-                return'''
-        '''ttt=len((kolet[5])[0])
-        for ggg in range (ttt):
-                if (((kolet[5])[0])[ggg])==fi:
-                        if (((kolet[5])[1])[ggg])==la:'''
-        '''conn.send(f.encode("utf-8"))'''
-        #############send code for his email and check it####### we have problem!
-        #after check T
-        (kolet[0]).append(i)
-        (kolet[1]).append(e)
-        ((kolet[2])[0]).append(r)
-        ((kolet[2])[1]).append(d)
-        ((kolet[2])[2]).append(s)
-        (kolet[3]).append(fc)
-        (kolet[4]).append(p)
-        ((kolet[5])[0]).append(fi)
-        ((kolet[5])[1]).append(la)
-        _thread_start_new_thread(vorodf,(conn))
-        return
+                return
+        #chek nemiconim ke first name va last na,e tekrari beshe
+        conn.send(f.encode("utf-8"))
+        code = random.randint(10000,99999)
+        payam="SALAM rafigh gol! \n mamanoon ke mikhay ye account bezany va jumpforce bazi kony! \n in code tayidete:  "+str(code)+"\n age to az hichi khabar nadari, ye e-mail be hamin adress bezan.mamanoon (: \n ba tashakor, ravabet omomi jumpforce. \n rah ertebati ma va shoma: hamin e=mail. \n HELLIGAMES company."
+        d=sendmail(e,"jumpforce-Creat an account",payam)
+        tot=0
+        if d!={}:
+                print(d)
+                conn.send(("0").encode("utf-8"))
+                conn.close()
+                return
+        else:
+                conn.send(("1").encode("utf-8"))
+                codev=conn.recv(1024)
+                codev=int(codev.decode("utf-8"))
+                if codev==code:
+                        conn.send(("1").encode("utf-8"))
+                        (kolet[0]).append(i)
+                        (kolet[1]).append(e)
+                        ((kolet[2])[0]).append(r)
+                        ((kolet[2])[1]).append(d)
+                        ((kolet[2])[2]).append(s)
+                        (kolet[3]).append(fc)
+                        (kolet[4]).append(p)
+                        ((kolet[5])[0]).append(fi)
+                        ((kolet[5])[1]).append(la)
+                        _thread_start_new_thread(vorodf,(conn))
+                        return
+                else:
+                        conn.send(("0").encode("utf-8"))
+                        time.sleep(15)
+                        _thread_start_new_thread(sakhtf,(conn))
+                        return
 def kolf (conn):
         vs=conn.recv(1024)
         vs=vs.decode("utf-8")
@@ -197,4 +222,3 @@ s.listen(120)
 _thread_start_new_thread(listento,())
 time.sleep('modat baz boodan server(second)')
 s.close()
-       
