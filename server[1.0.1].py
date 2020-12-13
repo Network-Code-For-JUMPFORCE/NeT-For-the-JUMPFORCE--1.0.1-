@@ -12,7 +12,7 @@ import random
 #0=first name, 1=lastname
 #lfl=[]
 kolet=[[],[],[],[],[],[]]
-#0= online ya na 1=conn if on 
+#0= online ya na 1= conn if on 
 onof=[[],[]]
 def sendmail (to,subject,message):
         from_em='jumpforcehelligames@gmail.com'
@@ -29,38 +29,42 @@ def sendmail (to,subject,message):
         server.quit()
         return (problems)
 
-def good (conn,i):
+def good (conn,sh):
         
+
+
+
 def nf (conn):
         global kolet
         t=len(kolet[4])
         pk=kolet[4]
+        ek=kolet[1]
+        ik=kolet[0]
         f=-1
         vs=conn.recv(1024)
         vs=vs.decode("utf-8")
         p=conn.recv(1024)
         p=p.decode("utf-8")
-        if p in pk:
-                for i in range (t):
-                        if pk[i]==p:
-                                f=i
+        if vs in ik:
+                for tt in range (t):
+                        if ik[tt]==vs:
+                                f=tt
                                 break
-        f=str(f)
-        conn.send(f.encode("utf-8")
-        f=int(f)
-        if f==-1:
-                time.sleep (7)
-                _thread_start_new_thread(vorodf,(conn))
+        elif vs in ek :
+                for tt in range (t):
+                        if ek[tt]==vs:
+                                f=tt
+                                break
+        if f!=-1 and pk[f]==p:
+                conn.send(('1').encode("utf-8"))
+                (onof[0])[f]=1
+                (onof[1])[f]=conn
+                _thread_start_new_thread(good,(conn,f))
                 return
-        if ((kolet[0])[f])==vs or ((kolet[1])[f])==vs:
-                print (((kolet[0])[f]),"   ",((kolet[1])[f]),"---->"," vared shod.")
-                payam=1
-        else:
-                payam=0
-        payam=str(payam)
-        conn.send(payam.encode("utf-8"))
-        _thread_start_new_thread(good,(conn,i))
-def yf (conn) :
+        conn.send(('0').encode("utf-8"))
+        _thread_start_new_thread(vorodf,(conn))
+        return
+def yf (conn):
         global kolet
         rang = (kolet[2])[0]
         dost = (kolet[2])[1]
@@ -118,10 +122,13 @@ def yf (conn) :
 		hispas = (kolet[4])[ff]
 		conn.send(((str(hispas)).encode("utf-8"))
                 _thread_start_new_thread(vorodf,(conn))
+                return
 	if fff==0:
 		time.sleep(15)
 		_thread_start_new_thread(vorodf,(conn))
 	return 
+
+
 def vorodf (conn):     
         #f4=vorodf
         vs=conn.recv(1024)
@@ -191,6 +198,8 @@ def sakhtf (conn):
                         (kolet[4]).append(p)
                         ((kolet[5])[0]).append(fi)
                         ((kolet[5])[1]).append(la)
+                        (onof[0]).append(0)
+                        (onof[1]).append(0)
                         _thread_start_new_thread(vorodf,(conn))
                         return
                 else:
