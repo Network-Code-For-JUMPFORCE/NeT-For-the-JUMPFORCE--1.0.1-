@@ -36,6 +36,7 @@ def good (conn,sh):
 
 def nf (conn):
         global kolet
+	global onof
         t=len(kolet[4])
         pk=kolet[4]
         ek=kolet[1]
@@ -62,6 +63,7 @@ def nf (conn):
                 _thread_start_new_thread(good,(conn,f))
                 return
         conn.send(('0').encode("utf-8"))
+	time.sleep(7)
         _thread_start_new_thread(vorodf,(conn))
         return
 def yf (conn):
@@ -75,12 +77,13 @@ def yf (conn):
         d=d.decode("utf-8")
         s=conn.recv(1024)
         s=s.decode("utf-8")
-        f='-1'
+        f=-1
         t=len(rang)
         if r in rang :
                 for i in range (t):
                         if rang[i]==r:
                                 f=i
+	f=str(f)
         conn.send(f.encode("utf-8"))
         f=int(f)
 	ff=f
@@ -102,7 +105,7 @@ def yf (conn):
 		payamcode="salam rafigh gol. \n behemoon gofti ke ramzeto faramosh kardi, age ke gofti, bashe, inam code vorodet,\n"+ str(code) + "\n amma age az hichi khabar nadari, ye e-mail be hamin address bezan. albate, kolan ma dost darim ke baz khord shoma ro beshnavim, pas in e-mailo be onvan pol ertebati ma va khodet, dar nazar begir. \n ba tashako, JUMPFORCE GROUP. \n helli 3" 
 		bb=sendmail  ((kolet[1])[ff],"ramzeto faramoosh kardi??(jumpforce game)",payamcode)
                 if bb!={}:
-                        print (conn, bb)
+                        print ((kolet[1])[ff], bb)
                         conn.send(("0").encode("utf-8"))
                         conn.close()
                         return
@@ -117,6 +120,7 @@ def yf (conn):
                 _thread_start_new_thread(vorodf,(conn))
                 return
 	conn.send(((str(fff)).encode("utf-8"))
+	fff=int(fff)
         hispas=0
 	if fff==1:
 		hispas = (kolet[4])[ff]
@@ -127,7 +131,6 @@ def yf (conn):
 		time.sleep(15)
 		_thread_start_new_thread(vorodf,(conn))
 	return 
-
 
 def vorodf (conn):     
         #f4=vorodf
@@ -142,6 +145,7 @@ def vorodf (conn):
                 _thread_start_new_thread(yf,(conn))
         return
 def sakhtf (conn):
+	global onof
         global kolet
         i=conn.recv(1024)
         i=i.decode("utf-8")
@@ -170,8 +174,24 @@ def sakhtf (conn):
         if e in (kolet(1)) :
                 f='21'
                 conn.send(f.encode("utf-8"))
-                _thread_start_new_thread(sakhtf,(conn))       in bakhsh moshkel dare, bayad dorost beshe, faghat ye moshkel flochartie.
+                _thread_start_new_thread(sakhtf,(conn))       
                 return
+	if r in ((kolet(2))[0]) :
+                f='23'
+                conn.send(f.encode("utf-8"))
+                _thread_start_new_thread(sakhtf,(conn))       
+                return
+	if d in ((kolet(2))[1]):
+		f='24'
+                conn.send(f.encode("utf-8"))
+                _thread_start_new_thread(sakhtf,(conn))       
+                return
+	if s in ((kolet(2))[2]):
+		f='25'
+                conn.send(f.encode("utf-8"))
+                _thread_start_new_thread(sakhtf,(conn))       
+                return
+			  
         #chek nemiconim ke first name va last na,e tekrari beshe
         conn.send(f.encode("utf-8"))
         code = random.randint(10000,99999)
