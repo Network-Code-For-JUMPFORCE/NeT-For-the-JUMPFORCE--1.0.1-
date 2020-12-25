@@ -1,8 +1,9 @@
+import _thread
+import random
+import smtplib
 import socket
 import time
-import _thread
-import smtplib
-import random
+
 #lid=[]
 #lem=[]
 #rang, dost, sen
@@ -14,6 +15,10 @@ import random
 kolet=[[],[],[],[],[],[]]
 #0= online ya na 1= conn if on 
 onof=[[],[]]
+#friend haye har kas
+fr=[]
+#chejori mikhad bazi kone
+rw=[]
 def sendmail (to,subject,message):
         from_em='jumpforcehelligames@gmail.com'
         cc=[""]
@@ -28,12 +33,48 @@ def sendmail (to,subject,message):
         problems = server.sendmail(from_em,to,message)
         server.quit()
         return (problems)
+def bf (conn,sh,vs)
+def sr (conn,sh):
 
+def swf (conn,sh):
+                                        #inja ye soali pish miad
+        global fr
+        global onof
+        s=conn.recv(1024)
+        s=s.decode("utf-8")
+        s=int(s)
+        if s==1:
+                #show friend list
+                t=len(fr[sh])
+                conn.send((str(t)).encode("utf-8"))
+                for i in fr[sh]:
+                        conn.send((i).encode("utf-8"))
+                vs=conn.recv(1024)
+                vs=vs.decode("utf-8")
+                vs=int(vs)
+                _thread_start_new_thread(bf,(conn,sh,vs))
+                return
+        if s==2:
+                #add a friend
+                vs=conn.recv(1024)
+                vs=vs.decode("utf-8")
+                v=conn.recv(1024)
+                v=vs.decode("utf-8")
+                
+
+                
 def good (conn,sh):
-        
-
-
-
+        global rw
+        vs=conn.recv(1024)
+        vs=vs.decode("utf-8")
+        vs=int(vs)
+        if vs==1:
+                rw[sh]=1
+                _thread_start_new_thread(swf,(conn,sh))
+        elif vs==0:
+                rw[sh]=2
+                _thread_start_new_thread(sr,(conn,sh))
+        return
 def nf (conn):
         global kolet
 	global onof
@@ -220,6 +261,8 @@ def sakhtf (conn):
                         ((kolet[5])[1]).append(la)
                         (onof[0]).append(0)
                         (onof[1]).append(0)
+                        fr.append([])
+                        rw.append(0)
                         _thread_start_new_thread(vorodf,(conn))
                         return
                 else:
